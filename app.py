@@ -237,15 +237,13 @@ print(classification_report(Y_test, predictions))
 
 from joblib import dump
 from joblib import load
-from numpy import array
+# from numpy import array # Remove this import if you don't need it for anything else
 
 # prepare the model
 X = data.values[:,0:8]
-Y = array[:,8]
+Y = data.values[:,8]   # <--- CORRECTED LINE: Use data.values as you did before
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.33, random_state=7)
-# Fit the model on 33%
-model = LogisticRegression(max_iter=200)
-model.fit(X_train, Y_train)
+# ... rest of the code
 
 # save the model to disk
 filename = 'finalized_model.sav'
